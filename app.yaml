@@ -1,0 +1,9 @@
+runtime: python310
+entrypoint: gunicorn -b :$PORT run:app
+
+automatic_scaling:
+  min_instances: 1
+  max_instances: 5
+
+env_variables:
+  MONGO_URI: "mongodb+srv://akash:jXEQJVnnByx7pwbK@a2zdigitalone.rwl0a.mongodb.net/a2zdigitalone?retryWrites=true&w=majority"

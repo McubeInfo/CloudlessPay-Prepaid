@@ -11,18 +11,9 @@
     <meta name="keywords" content="CloudlessPay, API documentation, payment gateway integration, CloudlessPay API, developer guide, payment API">
     <meta name="author" content="CloudlessPay Team">
 
-	<!-- Open Graph Meta Tags (for Social Media Sharing) -->
-    <meta property="og:title" content="Razorpay API - CloudlessPay Documentation">
-    <meta property="og:description" content="Access CloudlessPay API Documentation for step-by-step guides, examples, and seamless integration resources.">
-    <meta property="og:image" content="../static/images/CloudlessPay Favicon 96x96.png">
-    <meta property="og:url" content="https://www.cloudlesspay.com/docs/razorpay">
-    <meta property="og:type" content="website">
-
-
-	<link rel="shortcut icon" href="../static/images/CloudlessPay Favicon 96x96.png">
+	<link href="../static/images/Cloudless pay logo green version.png" rel="icon">
 
 	<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap" rel="stylesheet">
-	<!-- <script defer src="../static/fontawesome/js/all.min.js"></script> -->
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.2/styles/atom-one-dark.min.css">
 	<link rel="stylesheet" href="../static/plugins/simplelightbox/simple-lightbox.min.css">
@@ -46,7 +37,7 @@
 							<span></span>
 						</button>
 						<div class="site-logo"><a class="navbar-brand" href="/docs/app"><img class="logo-icon me-2"
-									src="../static/images/CloudlessPay New.svg" alt="logo" style="width: 50px;"><span
+									src="../static/images/Cloudless pay logo green version.png" alt="logo" style="width: 45px;"><span
 									class="logo-text">Cloudless<span class="text-alt">Pay</span></span></a></div>
 						<button id="mobile-toggle" title="Switch to Playground" class="btn btn-sm mobile-toggle off">
 							<i style="font-size: 22px;font-weight: bolder !important;" class="bi bi-toggle-off text-primary"></i>
@@ -247,8 +238,7 @@
 											<td>amount</td>
 											<td>int</td>
 											<td>Yes</td>
-											<td>The amount for the order in the smallest currency unit (e.g., paise for
-												INR).</td>
+											<td>The amount for the order. You can pass the actuall amount as integer. (50 rupees = 50) </td>
 										</tr>
 										<tr>
 											<th scope="row">2</th>
@@ -303,7 +293,7 @@
 							<div class="docs-code-block">
 								<pre class="shadow-lg rounded"><code class="language-json">
 {
-  "amount": 10000,
+  "amount": 100,
   "currency": "INR",
   "receipt": "receipt#1",
   "notes": {
@@ -504,31 +494,60 @@
 										aria-labelledby="curl-tab">
 										<div class="docs-code-block">
 											<pre class="shadow-lg rounded"><code class="language-bash">
-  # Basic curl command to fetch a URL
-  curl -X GET https://api.cloudless.com/data -H "Authorization: Bearer YOUR_TOKEN"
+curl -X POST https://www.cloudlesspayment.com/api/create-order \
+  -H "Authorization: Bearer your-access-token" \  # Replace with your actual token
+  -H "Content-Type: application/json" \  # Set content type to JSON
+  -d "{
+    \"amount\": 50,  # Actual Amount (50 = ₹50)
+    \"currency\": \"INR\",  # Currency type
+    \"payment_capture\": 1,  # Capture payment immediately
+    \"receipt\": \"order_rcptid_11\",  # Unique receipt ID for this order
+    \"notes\": {
+      \"note_key\": \"value\"  # Optional: Any extra notes for the payment
+    }
+  }"
+
+
 				</code></pre>
 										</div>
 									</div>
 									<div class="tab-pane fade" id="js" role="tabpanel" aria-labelledby="js-tab">
 										<div class="docs-code-block">
 											<pre class="shadow-lg rounded"><code class="language-javascript">
+// Define the access token and API endpoint URL
 const accessToken = "your-access-token";  
-const apiUrl = 'https://api.cloudless.com/create-order'; 
+const apiUrl = 'https://www.cloudlesspayment.com/api/create-order'; 
 
-fetch(apiUrl, 
-  {
-	method: 'get',
-	headers: {
-		'Authorization': `Bearer ${accessToken}`,  
-	},
-  })
-  .then(response => response.json())             
-  .then(data => {
-	
-  })
-  .catch(error => {
-	
-  });
+// Define the body content for the API request
+const bodyContent = {
+  amount: 50, // Example: Total order amount in paise (50 = ₹50)
+  currency: "INR", // Currency type
+  payment_capture: 1, // Capture the payment immediately (1)
+  receipt: "order_rcptid_11", // Unique receipt ID for this order
+  notes: {
+    note_key: "value" // Optional: Any extra notes for the payment
+  }
+};
+
+// Make a POST request to the API endpoint
+fetch(apiUrl, {
+  method: 'POST', // Use POST method to send the data
+  headers: {
+    'Authorization': `Bearer ${accessToken}`,  // Authorization header with the access token
+    'Content-Type': 'application/json' // Ensure that the content type is JSON
+  },
+  body: JSON.stringify(bodyContent), // Send the request body as a JSON string
+})
+.then(response => response.json()) // Parse the response JSON
+.then(data => {
+  console.log('Payment order created successfully:', data);
+  // Process the successful response data
+})
+.catch(error => {
+  console.error('Error creating payment order:', error);
+  // Handle any errors that occur during the API call
+});
+
 											</code></pre>
 										</div>
 									</div>

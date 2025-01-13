@@ -19,7 +19,7 @@ def email_template(title, content):
     <html>
         <body style="font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 20px;">
             <div style="max-width: 600px; margin: auto; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
-                <div style="background: #007bff; color: white; padding: 20px; text-align: center;">
+                <div style="background: #28b76b; color: white; padding: 20px; text-align: center;">
                     <h1 style="margin: 0; font-size: 24px;">{title}</h1>
                 </div>
                 <div style="padding: 20px; line-height: 1.6; color: #333;">

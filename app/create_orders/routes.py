@@ -14,7 +14,7 @@ def create_order(current_user):
     user = User.objects(email=email).first()
     
     if not user.razorpay_key_id or not user.razorpay_key_secret:
-        log_api_request("/auth/create-order", email, "Razorpay credentials not found for the user", "failure")
+        log_api_request("/api/create-order", email, "Razorpay credentials not found for the user", "failure")
         return jsonify({"error": "Razorpay credentials not found for the user"}), 400
     
     key_id = user.razorpay_key_id
@@ -27,7 +27,7 @@ def create_order(current_user):
     actual_amount = data.get('amount', 0)
     
     if not actual_amount or not isinstance(actual_amount, (int, float)) or actual_amount <= 0:
-        log_api_request("/auth/create-order", email, "Amount is required and must be a positive number", "failure")
+        log_api_request("/api/create-order", email, "Amount is required and must be a positive number", "failure")
         return jsonify({"error": "Invalid Input", "message": "Amount is required and must be a positive number"}), 400
     
     amount = int(actual_amount) * 100
@@ -42,16 +42,16 @@ def create_order(current_user):
         try:
             first_payment_min_amount = data['first_payment_min_amount']
             if first_payment_min_amount >= actual_amount:
-                log_api_request("/auth/create-order", email, "First payment minimum amount must be less than total order amount","failure")
+                log_api_request("/api/create-order", email, "First payment minimum amount must be less than total order amount","failure")
                 return jsonify({"error": "Invalid Input", "message": "First payment minimum amount must be less than total order amount"}), 400
         except Exception as e:
-            log_api_request("/auth/create-order", email, "The first_payment_min_amount is required if partial_payment is true.", "failure")
+            log_api_request("/api/create-order", email, "The first_payment_min_amount is required if partial_payment is true.", "failure")
             return jsonify({"error": "Missing Input Parameter", "message": "The first_payment_min_amount is required if partial_payment is true."}), 400
     
     # Check if user has enough credits
     wallet = Wallet.objects(user=user).first()
     if not wallet or wallet.credits <= 0:
-        log_api_request("/api/order/create-order", email, "Insufficient credits", "failure")
+        log_api_request("/api/create-order", email, "Insufficient credits", "failure")
         return jsonify({"error": "Insufficient credits", "message": "You don't have enough credits to create this order"}), 400
 
     payment_data = {
@@ -79,7 +79,7 @@ def create_order(current_user):
 
         order_response = {"order": order, "message": "Order created successfully"}
 
-        log_api_request("/auth/create-order", email, order_response, "success")
+        log_api_request("/api/create-order", email, order_response, "success")
         # Deduct 1 credit for this operation
         wallet.update(inc__credits=-1)
         return jsonify(order_response), 201

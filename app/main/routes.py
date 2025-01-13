@@ -2,6 +2,7 @@ from . import main_bp
 from flask import render_template, redirect, url_for, session, request, jsonify
 from models import User
 import requests
+from utils.utils import login_required
 
 @main_bp.app_context_processor
 def inject_user():
@@ -51,6 +52,7 @@ def doc_page():
     return render_template('razorpay.html')
 
 @main_bp.get('/docs/settings')
+@login_required
 def settings():
     return render_template('settings.html')
 

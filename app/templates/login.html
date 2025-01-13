@@ -2,15 +2,14 @@
 <html lang="en">
 
 <head>
-    <title>CloudlessPay - Login</title>
-
+    <title>CloudlessPay Login - Secure Payment Gateway Access</title>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Bootstrap Documentation Template For Software Developers">
-    <meta name="author" content="Xiaoying Riley at 3rd Wave Media">
-    <link rel="shortcut icon" href="../static/images/CloudlessPay Favicon 96x96.png">
+    <meta name="description" content="Login to CloudlessPay to manage your payment gateway integration and access all developer resources for seamless transactions.">
+    <meta name="keywords" content="CloudlessPay login, payment gateway, payment integration, secure login, developer portal, payment API, API login">
+    <meta name="author" content="CloudlessPay Team">
 
 
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap" rel="stylesheet">
@@ -38,7 +37,6 @@
             flex-direction: column;
             font-family: 'Montserrat', sans-serif;
             height: 100vh;
-            margin: -20px 0 50px;
         }
 
         h1 {
@@ -251,6 +249,9 @@
         }
 
         @media (max-width: 500px) {
+            .site-logo{
+                margin-top: 80px !important;
+            }
             .container {
                 display: flex;
                 flex-direction: column;
@@ -300,7 +301,7 @@
 <body>
     <div class="site-logo" style="margin: 30px;">
         <a class="navbar-brand" href="/docs/">
-            <img class="logo-icon me-2" src="../static/images/CloudlessPay New.svg" width="50" alt="logo">
+            <img class="logo-icon me-2" src="../static/images/Cloudless pay logo green version.png" width="45" alt="logo">
             <span class="logo-text">Cloudless<span class="text-alt">Pay</span></span>
         </a>
     </div>
@@ -308,17 +309,12 @@
         <div class="form-container sign-up-container">
             <form id="form-signup">
                 <h1>Create Account</h1>
-                <!-- <div class="social-container">
-                    <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-                    <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
-                </div> -->
                 <span>Use your email for registration</span>
                 <input type="text" name="username" placeholder="Name" />
                 <input type="email" name="email" placeholder="Email" />
                 <input type="password" name="password" placeholder="Password" />
                 <div style="display: flex; align-items: center; column-gap: 20px;">
-                    <button type="submit" class="btn btn-primary" id="form_sign_up">Sign Up</button>
+                    <button type="submit" class="btn btn-primary mt-2" id="form_sign_up">Sign Up</button>
                     <img src="../static/images/Spinner-5.gif" id="loading-spinner" style="display:none; text-align: center;" alt="Loading..." width="30" />
                 </div>
                 <div class="max-divs">
@@ -329,24 +325,16 @@
             <form id="form-verify-otp" style="display: none;">
                 <h1>Verify Email</h1>
                 <input type="text" name="otp" placeholder="Enter OTP" />
-                <button type="submit" class="btn btn-primary">Verify</button>
+                <button type="submit" class="btn btn-primary mt-2">Verify</button>
             </form>
         </div>
         <div class="form-container sign-in-container">
-            <!-- <script src="https://www.google.com/recaptcha/api.js" async defer></script> -->
             <form id="form-signin">
                 <h1>Sign in</h1>
-                <!-- <div class="social-container">
-                    <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-                    <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
-                </div> -->
                 <span>Use your account</span>
                 <input type="email" name="email" placeholder="Email" required/>
                 <input type="password" name="password" placeholder="Password" required/>
-                <!-- <div class="g-recaptcha" data-sitekey="6LczeacqAAAAABGsEEy1PSBgqshDKOirku1w2U2q"></div> -->
-                <a href="#">Forgot your password?</a>
-                <button type="submit" class="btn btn-primary">Sign In</button>
+                <button type="submit" class="btn btn-primary mt-2">Sign In</button>
                 <div class="max-divs">
                     <p>Don't have an account? <span class="badge rounded-pill bg-danger" id="max-signup">Sign-up</span>
                     </p>
@@ -374,22 +362,10 @@
 
         <div class="footer-bottom text-center py-5">
 
-            <ul class="social-list list-unstyled pb-4 mb-0">
-                <li class="list-inline-item"><a href="#"><i class="fa-brands fa-github fa-fw"></i></a></li>
-                <li class="list-inline-item"><a href="#"><i class="fa-brands fa-x-twitter fa-fw"></i></a></li>
-                <li class="list-inline-item"><a href="#"><i class="fa-brands fa-slack fa-fw"></i></a></li>
-                <li class="list-inline-item"><a href="#"><i class="fa-brands fa-product-hunt fa-fw"></i></a></li>
-                <li class="list-inline-item"><a href="#"><i class="fa-brands fa-facebook-f fa-fw"></i></a></li>
-                <li class="list-inline-item"><a href="#"><i class="fa-brands fa-instagram fa-fw"></i></a></li>
-            </ul>
-
-
             <small class="copyright">Designed with <span class="sr-only">love</span><i class="fas fa-heart"
                     style="color: #fb866a;"></i> by <a class="theme-link" href="http://mcubeinfotech.com"
                     target="_blank">Mcube Infotech</a> for
                 developers</small>
-
-
         </div>
 
     </footer>
@@ -421,7 +397,7 @@
     <script src="../static/js/highlight-custom.js"></script>
     <script src="../static/plugins/simplelightbox/simple-lightbox.min.js"></script>
     <script src="../static/plugins/gumshoe/gumshoe.polyfills.min.js"></script>
-    <script src="../static/js/docs.js"></script>
+    <!-- <script src="../static/js/docs.js"></script> -->
 
     <script>
         const signUpButton = document.getElementById('signUp');

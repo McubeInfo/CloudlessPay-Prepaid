@@ -155,9 +155,3 @@ def create_wallet(sender, document, **kwargs):
 
 
 signals.post_save.connect(create_wallet, sender=User)
-        
-        
-# User.credits = fields.LazyReferenceField('UserCredits', reverse_delete_rule=CASCADE)
-# User.api_logs = fields.ListField(fields.LazyReferenceField('APILog', reverse_delete_rule=CASCADE))
-# User.usage_logs = fields.ListField(fields.LazyReferenceField('UsageLog', reverse_delete_rule=CASCADE))
-# User.recharge_history = fields.ListField(fields.LazyReferenceField('RechargeHistory', reverse_delete_rule=CASCADE))

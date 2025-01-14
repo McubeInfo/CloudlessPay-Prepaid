@@ -5,6 +5,9 @@ automatic_scaling:
   min_instances: 1
   max_instances: 5
 
+static_files:
+  - include: /static/*
+
 env_variables:
   MONGO_URI: "mongodb+srv://akash:jXEQJVnnByx7pwbK@cloudlesspay.rwl0a.mongodb.net/cloudlesspay"
   FLASK_SECRET_KEY: "bd13c8d00deb88e1852161cdd4f2363a"

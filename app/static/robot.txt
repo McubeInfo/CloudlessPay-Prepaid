@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /auth/
+Disallow: /settings/
+Allow: /docs/
+Allow: /
+
+Sitemap: https://cloudlesspayment.com/sitemap.xml

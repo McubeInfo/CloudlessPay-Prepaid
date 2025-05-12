@@ -7,21 +7,21 @@ automatic_scaling:
 
 handlers:
 - url: /static
-  static_dir: static/
+  static_dir: app/static/
 
 - url: /robots.txt
-  static_files: static/robots.txt
-  upload: static/robots.txt
+  static_files: app/static/robots.txt
+  upload: app/static/robots.txt
 
 - url: /sitemap.xml
-  static_files: static/sitemap.xml
-  upload: static/sitemap.xml
+  static_files: app/static/sitemap.xml
+  upload: app/static/sitemap.xml
 
 - url: /.*
   script: auto
 
 env_variables:
-  MONGO_URI: "mongodb+srv://akash:jXEQJVnnByx7pwbK@cloudlesspay.rwl0a.mongodb.net/cloudlesspay"
+  MONGO_URI: "mongodb+srv://akash:jXEQJVnnByx7pwbK@cloudlesspayfree.rwl0a.mongodb.net/cloudlesspayfree"
   FLASK_SECRET_KEY: "bd13c8d00deb88e1852161cdd4f2363a"
   FLASK_DEBUG: True
   FLASK_JWT_SECRET_KEY: "8f6cf54b330adad9e3d7db1b82cb8bb4"

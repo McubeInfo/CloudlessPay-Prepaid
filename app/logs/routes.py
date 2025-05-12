@@ -81,7 +81,7 @@ def get_logs():
         # Prepare log data
         log_data = [{
             "id": str(log.id),
-            "time": log.log_time.strftime('%Y-%m-%d %H:%M:%S'),
+            "time": log.log_time.strftime('%Y-%m-%d %H:%M:%S') if isinstance(log.log_time, datetime) else datetime.strptime(log.log_time, '%Y-%m-%dT%H:%M:%S.%f').strftime('%Y-%m-%d %H:%M:%S'),
             "endpoint": log.endpoint,
             "user": User.objects(id=log.user.id).first().username if log.user else "Unknown",
             "domain": log.domain,

@@ -208,7 +208,8 @@ def payment_history():
 
         # Format data for DataTables
         data = [{
-            "payment_date": payment.payment_date.strftime("%d-%m-%Y"),
+            "payment_date": payment.payment_date.strftime("%d-%m-%Y") if isinstance(payment.payment_date, datetime) 
+    else datetime.strptime(payment.payment_date, '%Y-%m-%dT%H:%M:%S.%f').strftime("%d-%m-%Y"),
             "transaction_id": payment.transaction_id,
             "amount": f"₹{payment.amount:.2f}",
             "status": payment.status,

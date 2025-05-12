@@ -639,7 +639,7 @@
 		let data = [];
 
 	
-		fetch('../static/js/countries+states+cities.json')
+		fetch('https://storage.googleapis.com/cloudlesspay.appspot.com/countries%2Bstates%2Bcities.json')
 			.then(response => response.json())
 			.then(jsonData => {
 				data = jsonData;
